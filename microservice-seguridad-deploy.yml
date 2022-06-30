@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-seguridad-deploy
+  labels:
+    name: microservice-seguridad-deploy
+    app: microservice
+spec:
+  # Este deploy desplegará el pod 'microservice-seguridad-pod' dos veces  
+  replicas: 2
+  selector:
+    matchLabels:
+      app: microservice-seguridad
+      type: microservice
+  template:
+    metadata:
+      name: microservice-seguridad-pod
+      labels:
+        app: microservice-seguridad
+        type: microservice
+    spec:
+      # Este deploy contiene un unico tipo de pod: 'microservice-seguridad-pod'
+      # Eso sí, este pod será desplegado dos veces (según atributo 'replicas')
+      containers:
+        - name: microservice-seguridad-app
+          image: rsanvidal/serviciosapiseguridad:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: ConnectionStrings__ConexionDB
+              value: Server=mssql-service;Database=Seguridad;User=sa;Password=Rsanvidal2025

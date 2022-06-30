@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssql-deploy
+  labels:
+    name: mssql-deploy
+    app: microservice-seguridad
+spec:
+  # Este deploy desplegará el pod 'mssql-pod' una única vez
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservice-seguridad
+      name: mssql-pod
+  template:
+    metadata:
+      name: mssql-pod
+      labels:
+        app: microservice-seguridad
+        name: mssql-pod
+    spec:
+      # Este deploy contiene un unico tipo de pod: 'mssql-pod'
+      # Este pod será desplegado una unica vez (según atributo 'replicas')
+      containers:
+        - name: mssql
+          image: mcr.microsoft.com/mssql/server
+          ports:
+            - containerPort: 1433
+          env:
+          - name: ACCEPT_EULA
+            value: "Y"
+          - name: SA_PASSWORD
+            value: "$Rsanvidal2025"

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gateway-pod
+  labels:
+    app: gateway
+    type: microservice
+spec:
+  # Este pod aloja un único container (de Docker) llamado gateway-app
+  containers:
+    - name: gateway-app
+      # Imagen obtenida desde Docker Hub
+      image: rsanvidal/serviciosapigateway:latest
+      # Se utiliza el puerto 80 para acceder a este container
+      ports:
+        - containerPort: 80
