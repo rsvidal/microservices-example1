@@ -6,6 +6,7 @@ metadata:
     name: mssql-deploy
     app: microservice-seguridad
 spec:
+  # Este deploy desplegará el pod 'mssql-pod' una única vez
   replicas: 1
   selector:
     matchLabels:
@@ -18,6 +19,8 @@ spec:
         app: microservice-seguridad
         name: mssql-pod
     spec:
+      # Este deploy contiene un unico tipo de pod: 'mssql-pod'
+      # Este pod será desplegado una unica vez (según atributo 'replicas')
       containers:
         - name: mssql
           image: mcr.microsoft.com/mssql/server

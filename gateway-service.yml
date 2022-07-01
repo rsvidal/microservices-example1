@@ -6,6 +6,7 @@ metadata:
     name: gateway-service
     app: microservice
 spec:
+  # Este service es de tipo LoadBalancer y se tiene acceso a este nodo de K8s desde el exterior, mediante el puerto indicado en nodePort
   type: LoadBalancer
   ports:
     - port: 80

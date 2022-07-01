@@ -6,11 +6,15 @@ metadata:
     app: microservice-seguridad
     type: microservice
 spec:
+  # Este pod aloja un único container (de Docker) llamado microservice-seguridad-app
   containers:
     - name: microservice-seguridad-app
+      # Imagen obtenida desde Docker Hub
       image: rsanvidal/serviciosapiseguridad:latest
+      # Se utiliza el puerto 80 para acceder a este container, porque este contenedor tiene un microservicio de tipo aplicación Web
       ports:
         - containerPort: 80
       env:
+        # Sustituye la variable "ConnectionStrings" --> "ConexionBD" definida en el fichero appsettings.json del proyecto Servicios.api.Seguridad
         - name: ConnectionStrings__ConexionDB
           value: Server=mssql-service;Database=Seguridad;User=sa;Password=$Rsanvidal2025

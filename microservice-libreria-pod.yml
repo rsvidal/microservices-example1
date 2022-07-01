@@ -6,11 +6,15 @@ metadata:
     app: microservice-libreria
     type: microservice
 spec:
+  # Este pod aloja un único container (de Docker) llamado microservice-libreria-app
   containers:
     - name: microservice-libreria-app
+      # Imagen obtenida desde Docker Hub
       image: rsanvidal/serviciosapilibreria:latest
+      # Se utiliza el puerto 80 para acceder a este container, porque este contenedor tiene un microservicio de tipo aplicación Web
       ports:
         - containerPort: 80
       env:
+        # Sustituye la variable "MongoDb" --> "ConnectionString" definida en el fichero appsettings.json del proyecto Servicios.api.Libreria
         - name: MongoDb__ConnectionString
           value: mongodb://rsanvidal:$Rsanvidal2025@mongo-service:27017

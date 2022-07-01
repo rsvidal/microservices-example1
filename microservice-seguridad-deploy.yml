@@ -6,6 +6,7 @@ metadata:
     name: microservice-seguridad-deploy
     app: microservice
 spec:
+  # Este deploy desplegará el pod 'microservice-seguridad-pod' dos veces  
   replicas: 2
   selector:
     matchLabels:
@@ -18,9 +19,11 @@ spec:
         app: microservice-seguridad
         type: microservice
     spec:
+      # Este deploy contiene un unico tipo de pod: 'microservice-seguridad-pod'
+      # Eso sí, este pod será desplegado dos veces (según atributo 'replicas')
       containers:
         - name: microservice-seguridad-app
-          image: rsanvidal/serviciosapiseguridad:v3.#{Build.BuildId}#
+          image: rsanvidal/serviciosapiseguridad:latest
           ports:
             - containerPort: 80
           env:

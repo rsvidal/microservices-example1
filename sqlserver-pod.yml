@@ -7,11 +7,15 @@ metadata:
     name: mssql-pod
 spec:
   containers:
+    # Este pod aloja un único container (de Docker) llamado mssql (contiene la base de datos SQLServer)
     - name: mssql
+      # Imagen obtenida desde Docker Hub
       image: mcr.microsoft.com/mssql/server
+      # Se utiliza el puerto 1433 para acceder a este container, porque este contenedor tiene alojado SQLServer, y esta base de datos tiene este puerto por defecto
       ports:
         - containerPort: 1433
       env:
+      # Define las credenciales para acceder a la base de datos SQLServer
       - name: ACCEPT_EULA
         value: "Y"
       - name: SA_PASSWORD
