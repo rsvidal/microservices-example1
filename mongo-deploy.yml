@@ -4,33 +4,30 @@ metadata:
   name: mongo-deploy
   labels:
     name: mongo-deploy
-    app:  microservice-libreria
+    app:  microservice
 spec:
-  # Este deploy desplegará el pod 'mongo-pod' una única vez
-  replicas: 1
-  selector:
-    matchLabels:
-      app: microservice-libreria
-      name: mongo-pod
-  template:
-    metadata:
-      name: mongo-pod
-      labels:
+    replicas: 1
+    selector:
+      matchLabels:
         app: microservice-libreria
         name: mongo-pod
-    spec:
-      # Este deploy contiene un unico tipo de pod: 'mongo-pod'
-      # Este pod será desplegado una unica vez (según atributo 'replicas')
-      containers:
-        - name: mongo
-          image: mongo:4.2.21
-          command:
-          - /bin/bash
-          - -c
-          ports:
-            - containerPort: 27017
-          env:
-          - name: MONGO_INITDB_ROOT_USERNAME
-            value: "rsanvidal"
-          - name: MONGO_INITDB_ROOT_PASSWORD
-            value: "$Rsanvidal2025"
+    template:
+        metadata:
+          name: mongo-pod
+          labels:
+            app: microservice-libreria
+            name: mongo-pod
+        spec:
+          containers:
+            - name: mongo
+              image: mongo:4.2.12
+              command:
+              - /bin/bash
+              - -c
+              env:
+              - name: MONGO_INITDB_ROOT_USERNAME
+                value: "rsanvidal"
+              - name: MONGO_INITDB_ROOT_PASSWORD
+                value: "$Rsanvidal2025"
+              ports:
+                - containerPort: 27017

@@ -6,7 +6,6 @@ metadata:
     name: gateway-deploy
     app: microservice
 spec:
-  # Este deploy desplegará el pod 'gateway-pod' una única vez
   replicas: 1
   selector:
     matchLabels:
@@ -19,10 +18,8 @@ spec:
         app: gateway
         type: microservice
     spec:
-      # Este deploy contiene un unico tipo de pod: 'gateway-pod'
-      # Este pod será desplegado una unica vez (según atributo 'replicas')
-      containers:
-        - name: gateway-app
-          image: rsanvidal/serviciosapigateway:lastest
-          ports:
-            - containerPort: 80
+     containers:
+      - name: gateway-app
+        image: rsanvidal/serviciosapigateway:v3.#{Build.BuildId}#
+        ports:
+          - containerPort: 80

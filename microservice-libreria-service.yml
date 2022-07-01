@@ -6,14 +6,10 @@ metadata:
     name: microservice-libreria-service
     app: microservice
 spec:
-  # Este service es de tipo ClusterIP, para impedir acceder directamente al pod 'microservice-libreria-pod' desde el exterior
-  # NOTA. Un service de tipo LoadBalancer es accesible desde el exterior
   type: ClusterIP
   ports:
     - port: 80
       targetPort: 80
-  # pod 'microservice-libreria-pod' 
-  # Se relaciona este service con el pod mediante los labels definidos en el fichero microservice-libreria-pod.yml
   selector:
     app: microservice-libreria
     type: microservice
