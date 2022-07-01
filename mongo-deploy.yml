@@ -19,13 +19,9 @@ spec:
         app: microservice-libreria
         name: mongo-pod
     spec:
-      # Este deploy contiene un unico tipo de pod: 'mongo-pod'
-      # Este pod será desplegado una unica vez (según atributo 'replicas')
-      containers:
+      containers:        
         - name: mongo
           image: mongo:4.2.21
-          ports:
-            - containerPort: 27017
           command:
           - /bin/bash
           - -c
@@ -34,3 +30,5 @@ spec:
             value: "rsanvidal"
           - name: MONGO_INITDB_ROOT_PASSWORD
             value: "$Rsanvidal2025"
+          ports:
+            - containerPort: 27017

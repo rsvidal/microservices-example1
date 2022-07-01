@@ -12,8 +12,6 @@ spec:
       # Imagen obtenida desde Docker Hub
       image: mongo:4.2.21
       # Se utiliza el puerto 27017 para acceder a este container, porque este contenedor tiene alojado MongoDB, y esta base de datos tiene este puerto por defecto
-      ports:
-        - containerPort: 27017
       command:
       - /bin/bash
       - -c
@@ -23,3 +21,5 @@ spec:
         value: "rsanvidal"
       - name: MONGO_INITDB_ROOT_PASSWORD
         value: "$Rsanvidal2025"
+      ports:
+        - containerPort: 27017
