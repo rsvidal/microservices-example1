@@ -4,7 +4,7 @@ metadata:
   name: mongo-deploy
   labels:
     name: mongo-deploy
-    app:  microservice
+    app:  microservice-libreria
 spec:
   # Este deploy desplegará el pod 'mongo-pod' una única vez
   replicas: 1
