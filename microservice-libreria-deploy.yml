@@ -23,7 +23,8 @@ spec:
       # Eso sí, este pod será desplegado dos veces (según atributo 'replicas')
       containers:
         - name: microservice-libreria-app
-          image: rsanvidal/serviciosapilibreria:latest
+          # RSV. ANULADO image: rsanvidal/serviciosapilibreria:latest
+          image: rsanvidal/serviciosapilibreria:v2.#{Build.BuildId}#
           ports:
             - containerPort: 80
           env:

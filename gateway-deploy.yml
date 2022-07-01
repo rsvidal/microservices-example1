@@ -23,6 +23,7 @@ spec:
       # Este pod será desplegado una unica vez (según atributo 'replicas')
       containers:
         - name: gateway-app
-          image: rsanvidal/serviciosapigateway:latest
+          #RSV ANULADO image: rsanvidal/serviciosapigateway:latest
+          image: rsanvidal/serviciosapigateway:v2.#{Build.BuildId}#
           ports:
             - containerPort: 80

@@ -23,7 +23,8 @@ spec:
       # Eso sí, este pod será desplegado dos veces (según atributo 'replicas')
       containers:
         - name: microservice-seguridad-app
-          image: rsanvidal/serviciosapiseguridad:latest
+          # RSV. ANULADO image: rsanvidal/serviciosapiseguridad:latest
+          image: rsanvidal/serviciosapiseguridad:v2.#{Build.BuildId}#
           ports:
             - containerPort: 80
           env:
