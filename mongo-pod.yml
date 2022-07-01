@@ -10,8 +10,6 @@ spec:
     - name: mongo
       image: mongo:4.2.12
       command:
-      - /bin/bash
-      - -c
       env:
       - name: MONGO_INITDB_ROOT_USERNAME
         value: "vaxidrez"
