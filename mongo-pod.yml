@@ -6,6 +6,7 @@ metadata:
     app: microservice-libreria
     name: mongo-pod
 spec:
+  containers:
     # Este pod aloja un único container (de Docker) llamado mongo (contiene la base de datos MongoDB)
     - name: mongo
       # Imagen obtenida desde Docker Hub
